@@ -18,6 +18,10 @@ public class BarValue
     public int GetNowValue(){
         return nowValue;
     }
+    public void SetMaxNowValue(int setmaxvalue, int setnowvalue){
+        maxValue = setmaxvalue;
+        nowValue = setnowvalue;
+    }
     /// <summary>
     /// 現在の値から受け取った値を足す
     /// </summary>
