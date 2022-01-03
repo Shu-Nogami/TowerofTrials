@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private bool ismove = true;
+    private bool isMove = true;
     // 移動先の座標
     private Vector3 nextmovepotion;
     // x軸の移動距離
@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (ismove)
+        if (isMove)
         {
             SetMovePotion();
         }
