@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyParameters : PawnParameters
 {
+    [SerializeField] PlayerParameters parameters;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,8 @@ public class EnemyParameters : PawnParameters
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hpValue.GetNowValue());
+        parameters.AddDamage(1);
+        parameters.AddXp(10);
     }
     protected override void initialize()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParameters : PawnParameters
+public class PlayerParameters : PawnParameters, IDamage, IPlusXp
 {
     // Start is called before the first frame update
     void Start()
@@ -13,10 +13,11 @@ public class PlayerParameters : PawnParameters
     // Update is called once per frame
     void Update()
     {
-        hpValue.CutNowValue(1);
         if(hpValue.GetNowValue() == 0){
             Dead();
         }
+        Debug.Log(hpValue.GetNowValue());
+        Debug.Log(xpValue.GetNowValue());
     }
     protected override void initialize()
     {
@@ -32,5 +33,11 @@ public class PlayerParameters : PawnParameters
     protected override void Dead()
     {
         Debug.Log("PlayerDead");
+    }
+    public void AddDamage(int damage){
+        hpValue.CutNowValue(damage);
+    }
+    public void AddXp(int plusxp){
+        xpValue.AddNowValue(plusxp);
     }
 }
