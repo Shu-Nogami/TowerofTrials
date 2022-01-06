@@ -26,14 +26,18 @@ public class BarValue
     /// 現在の値から受け取った値を足す
     /// </summary>
     public void AddNowValue(int addvalue){
-        nowValue += addvalue;
-        if(nowValue > maxValue) nowValue = maxValue;
+        if(addvalue > 0){
+            nowValue += addvalue;
+            if(nowValue > maxValue) nowValue = maxValue;
+        }
     }
     /// <summary>
     /// 現在の値から受け取った値を引く
     /// </summary>
     public void CutNowValue(int cutvalue){
-        nowValue -= cutvalue;
-        if(nowValue < 0) nowValue = 0;
+        if(cutvalue > 0){
+            nowValue -= cutvalue;
+            if(nowValue < 0) nowValue = 0;
+        }
     }
 }

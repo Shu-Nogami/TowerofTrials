@@ -20,7 +20,7 @@ public class PawnParameters : MonoBehaviour
         xpValue.SetMaxNowValue(100, 0);
         manaValue.SetMaxNowValue(100, 100);
         level = 1;
-        attackdamage = 100;
+        attackdamage = 1;
         critical = 0;
         defense = 100;
         money = 0;

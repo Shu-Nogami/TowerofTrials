@@ -16,8 +16,6 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
         if(hpValue.GetNowValue() == 0){
             Dead();
         }
-        Debug.Log(hpValue.GetNowValue());
-        Debug.Log(xpValue.GetNowValue());
     }
     protected override void initialize()
     {
@@ -27,7 +25,7 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
         level = 1;
         attackdamage = 100;
         critical = 0;
-        defense = 100;
+        defense = 0;
         money = 0;
     }
     protected override void Dead()
@@ -35,7 +33,8 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
         Debug.Log("PlayerDead");
     }
     public void AddDamage(int damage){
-        hpValue.CutNowValue(damage);
+        hpValue.CutNowValue(damage - defense);
+        Debug.Log(hpValue.GetNowValue());
     }
     public void AddXp(int plusxp){
         xpValue.AddNowValue(plusxp);
