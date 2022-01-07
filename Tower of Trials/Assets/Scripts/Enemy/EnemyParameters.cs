@@ -8,25 +8,33 @@ public class EnemyParameters : PawnParameters, IDamage
     void Start()
     {
         initialize();
+        BattleManager.battleinstance.AddEnemyList(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //仮置き
-        if(Input.GetKeyDown(KeyCode.Space)){
-            BattleManager.battleinstance.PlayerAddDamage(attackdamage);
-        }
+
     }
     protected override void initialize()
     {
         base.initialize();
+        hpValue.SetNowValue(1);
+        defense = 0;
     }
     public void AddDamage(int damage){
         hpValue.CutNowValue(damage - defense);
+        Debug.Log("enemy's hp = " + hpValue.GetNowValue());
+        if(hpValue.GetNowValue() == 0){
+            Dead();
+        }
     }
     protected override void Dead()
     {
-        Destroy(gameObject);
+        Debug.Log("Enemy Dead");
+        Destroy(this.gameObject);
+    }
+    public int GetAttackDamage(){
+        return attackdamage;
     }
 }

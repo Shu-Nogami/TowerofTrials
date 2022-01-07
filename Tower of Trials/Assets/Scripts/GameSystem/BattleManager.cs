@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private PlayerParameters Pparameters;
     List<GameObject> enemyList = new List<GameObject>();
+    public bool isPlayerattack = true;
 
     private void Awake(){
         if(battleinstance == null){
@@ -21,6 +22,12 @@ public class BattleManager : MonoBehaviour
             Destroy(gameObject);
         }
         Pparameters = player.GetComponent<PlayerParameters>();
+    }
+
+    private void Update(){
+        if(!isPlayerattack){
+            EnemiesAction();
+        }
     }
     /// <summary>
     /// 敵をリストに入れる
@@ -39,5 +46,15 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void EnemyAddDamage(int adddamage, int enemynumber){
         enemyList[enemynumber].GetComponent<EnemyParameters>().AddDamage(adddamage);
+        isPlayerattack = false;
+    }
+    /// <summary>
+    /// それぞれの敵の行動を実行する
+    /// </summary>
+    private void EnemiesAction(){
+        foreach(GameObject enemy in enemyList){
+            enemy.GetComponent<EnemyActions>().Actions();
+        }
+        isPlayerattack = true;
     }
 }
