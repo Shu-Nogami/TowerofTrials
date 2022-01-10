@@ -36,15 +36,23 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Portions\LowHealPortion.cs" />
+     <Compile Include="Assets\Scripts\Interface\IPlusPortionState.cs" />
      <Compile Include="Assets\Scripts\Other\BarValue.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerParameters.cs" />
      <Compile Include="Assets\Scripts\Other\PawnParameters.cs" />
+     <Compile Include="Assets\Scripts\Portions\PortionManager.cs" />
      <Compile Include="Assets\Scripts\Interface\IPlusXp.cs" />
+     <Compile Include="Assets\Scripts\Other\PlusParameters.cs" />
      <Compile Include="Assets\Scripts\GameSystem\BattleManager.cs" />
-     <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyParameters.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyActions.cs" />
+     <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
+     <Compile Include="Assets\Scripts\Other\PortionState.cs" />
+     <Compile Include="Assets\Scripts\Other\PortionParameters.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyParameters.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerActions.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -620,6 +628,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{8d5707f5-cf5e-1796-f5b2-ce34f5fda06a}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{b0ea7b0f-33b0-bbe0-5ddf-e8f06ddc761a}</Project>
       <Name>Unity.VSCode.Editor</Name>
@@ -632,10 +644,6 @@
       <Project>{928a7dc6-2d0b-eaed-6b18-e0ff0f54f6df}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{92d750eb-cb80-de38-6af5-b685799ccf42}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{79e2bbbe-0c8e-0b56-df2e-3ae367af00c0}</Project>
       <Name>Unity.Timeline</Name>
@@ -643,6 +651,10 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{823c0af9-079f-c6a7-db7c-dcef1a695c82}</Project>
       <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{92d750eb-cb80-de38-6af5-b685799ccf42}</Project>
+      <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{d837a76b-b060-1e02-66b7-3adbd0bba656}</Project>

@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     private PlayerParameters Pparameters;
     List<GameObject> enemyList = new List<GameObject>();
     public bool isPlayerattack = true;
+    public bool isBattle = true;
 
     private void Awake(){
         if(battleinstance == null){
@@ -46,7 +47,6 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void EnemyAddDamage(int adddamage, int enemynumber){
         enemyList[enemynumber].GetComponent<EnemyParameters>().AddDamage(adddamage);
-        isPlayerattack = false;
     }
     /// <summary>
     /// それぞれの敵の行動を実行する

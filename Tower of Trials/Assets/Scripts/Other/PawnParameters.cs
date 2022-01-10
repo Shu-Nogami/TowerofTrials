@@ -15,7 +15,7 @@ public class PawnParameters : MonoBehaviour
     /// <summary>
     /// パラメータの値を初期化（上書き可）
     /// </summary>
-    protected virtual void initialize(){
+    protected virtual void Initialize(){
         hpValue.SetMaxNowValue(100, 100);
         xpValue.SetMaxNowValue(100, 0);
         manaValue.SetMaxNowValue(100, 100);

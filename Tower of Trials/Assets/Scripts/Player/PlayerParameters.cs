@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParameters : PawnParameters, IDamage, IPlusXp
+public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionState
 {
     // Start is called before the first frame update
     void Start()
     {
-        initialize();
+        Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(BattleManager.battleinstance.isPlayerattack){
-            if(Input.GetKeyDown(KeyCode.Space)){
-                BattleManager.battleinstance.EnemyAddDamage(attackdamage, 0);
-            }
-        }
+
     }
     /// <summary>
     /// パラメータの初期化
     /// </summary>
-    protected override void initialize()
+    protected override void Initialize()
     {
         hpValue.SetMaxNowValue(500, 3);
         xpValue.SetMaxNowValue(500, 0);
@@ -55,5 +51,19 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
     /// </summary>
     public void AddXp(int plusxp){
         xpValue.AddNowValue(plusxp);
+    }
+    /// <summary>
+    /// 攻撃力を渡す
+    /// </summary>
+    public int GetAttckDamage(){
+        return attackdamage;
+    }
+    /// <summary>
+    /// 使用したポーションの効果を反映
+    /// </summary>
+    public void EffectPortion(PlusParameters plusvalues){
+        hpValue.AddNowValue(plusvalues.GetPlusHp());
+        manaValue.AddNowValue(plusvalues.GetPlusMana());
+        Debug.Log("Player HEAL hp = " + hpValue.GetNowValue());
     }
 }

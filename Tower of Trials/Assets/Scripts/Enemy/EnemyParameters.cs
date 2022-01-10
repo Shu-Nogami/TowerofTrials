@@ -7,7 +7,7 @@ public class EnemyParameters : PawnParameters, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        initialize();
+        Initialize();
         BattleManager.battleinstance.AddEnemyList(this.gameObject);
     }
 
@@ -16,9 +16,9 @@ public class EnemyParameters : PawnParameters, IDamage
     {
 
     }
-    protected override void initialize()
+    protected override void Initialize()
     {
-        base.initialize();
+        base.Initialize();
         hpValue.SetNowValue(1);
         defense = 0;
     }
