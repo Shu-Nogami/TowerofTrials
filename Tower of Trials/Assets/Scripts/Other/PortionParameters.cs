@@ -30,13 +30,13 @@ public class PortionParameters : MonoBehaviour
     /// <summary>
     /// ポーションの個数を指定数増やす
     /// </summary>
-    protected virtual void AddPortionNumber(int addcount){
+    private void AddPortionNumber(int addcount){
         count += addcount;
     }
     /// <summary>
     /// ポーションの個数を指定数減らす
     /// </summary>
-    protected virtual void CutPortionNumber(int cutcount){
+    private void CutPortionNumber(int cutcount){
         count -= cutcount;
         if(count < 0) count = 0;
     }

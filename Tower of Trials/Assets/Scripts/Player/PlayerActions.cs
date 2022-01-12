@@ -24,8 +24,7 @@ public class PlayerActions : MonoBehaviour
     private void PlayerActionList(){
         if(BattleManager.battleinstance.isPlayerattack){
             if(Input.GetKeyDown(KeyCode.Space)){
-                BattleManager.battleinstance.EnemyAddDamage(Pparameters.GetAttckDamage(), 0);
-                BattleManager.battleinstance.isPlayerattack = false;
+                PlayerManager.playerinstance.AttackAction(0);
             }
             if(Input.GetKeyDown(KeyCode.I)){
                 EffectPortion(0);

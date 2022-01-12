@@ -19,7 +19,6 @@ public class EnemyParameters : PawnParameters, IDamage
     protected override void Initialize()
     {
         base.Initialize();
-        hpValue.SetNowValue(1);
         defense = 0;
     }
     public void AddDamage(int damage){
