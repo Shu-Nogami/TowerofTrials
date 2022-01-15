@@ -41,9 +41,11 @@
      <Compile Include="Assets\Scripts\Other\BarValue.cs" />
      <Compile Include="Assets\Scripts\Other\PawnParameters.cs" />
      <Compile Include="Assets\Scripts\Manager\PortionManager.cs" />
-     <Compile Include="Assets\Scripts\Other\PortionState.cs" />
+     <Compile Include="Assets\Scripts\Portions\PortionState.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillParameters.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyParameters.cs" />
      <Compile Include="Assets\Scripts\Manager\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\Skills\SkillStateValue.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerParameters.cs" />
      <Compile Include="Assets\Scripts\Interface\IPlusXp.cs" />
@@ -51,11 +53,13 @@
      <Compile Include="Assets\Scripts\Other\PlusParameters.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyActions.cs" />
      <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
-     <Compile Include="Assets\Scripts\Other\PortionParameters.cs" />
-     <Compile Include="Assets\Scripts\Other\ItemStateValue.cs" />
+     <Compile Include="Assets\Scripts\Portions\PortionParameters.cs" />
+     <Compile Include="Assets\Scripts\Skills\TestSkill.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemStateValue.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerActions.cs" />
-     <Compile Include="Assets\Scripts\Manager\GeneralManager.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerSkills.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerCollisionJudg.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

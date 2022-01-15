@@ -51,6 +51,9 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
     /// </summary>
     public void AddXp(int plusxp){
         xpValue.AddNowValue(plusxp);
+        if(xpValue.GetMaxValue() == xpValue.GetNowValue()){
+            PlayerManager.playerinstance.LevelUp(level);
+        }
     }
     /// <summary>
     /// 攻撃力を渡す
@@ -65,5 +68,9 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
         hpValue.AddNowValue(plusvalues.GetPlusHp());
         manaValue.AddNowValue(plusvalues.GetPlusMana());
         Debug.Log("Player HEAL hp = " + hpValue.GetNowValue());
+    }
+    public void StatusAtLevelUp(){
+        level++;
+        Debug.Log("Player Level UP :" + level);
     }
 }

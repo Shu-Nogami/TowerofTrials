@@ -45,9 +45,18 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// プレイヤーから敵に対してのダメージ
     /// </summary>
-    public void EnemyAddDamage(int adddamage, int enemynumber){
-        enemyList[enemynumber].GetComponent<EnemyParameters>().AddDamage(adddamage);
+    public void EnemyAddDamage(int adddamage, int enemyNumber){
+        enemyList[enemyNumber].GetComponent<EnemyParameters>().AddDamage(adddamage);
+        Debug.Log("Enemy Damaged : " + adddamage);
         isPlayerattack = false;
+    }
+    public void UsedSkill(SkillStateValue skillValue, int targetNumber){
+        if(targetNumber == -1){
+            PlayerAddDamage(skillValue.GetDamage());
+        }
+        else{
+            EnemyAddDamage(skillValue.GetDamage(), targetNumber);
+        }
     }
     /// <summary>
     /// それぞれの敵の行動を実行する

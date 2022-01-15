@@ -9,7 +9,7 @@ public class PortionManager : MonoBehaviour
     public static PortionManager portioninstance;
     [SerializeField] List<GameObject> portions = new List<GameObject>();
     private List<GameObject> havingpotions = new List<GameObject>();
-    private Subject<PortionState> portionsubject = new Subject<PortionState>(); 
+    private Subject<PortionState> portionsubject = new Subject<PortionState>();
     PortionState portionState = new PortionState();
     [SerializeField] PlayerParameters Pparameters;
     GameObject portion;

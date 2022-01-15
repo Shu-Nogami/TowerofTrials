@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        
+        nextmovepotion = transform.position;
     }
 
     void Update()
@@ -31,19 +31,27 @@ public class PlayerMove : MonoBehaviour
     void SetMovePotion(){
         // 上方向
         if(Input.GetKeyDown(KeyCode.UpArrow)){
-            nextmovepotion = transform.position + zaxismove;
+            if(PlayerManager.playerinstance.GetMoveDirection(0)){
+                nextmovepotion = transform.position + zaxismove;
+            }
         }
         // 下方向
         if(Input.GetKeyDown(KeyCode.DownArrow)){
-            nextmovepotion = transform.position - zaxismove;
+            if(PlayerManager.playerinstance.GetMoveDirection(1)){
+                nextmovepotion = transform.position - zaxismove;
+            }
         }
         // 右方向
         if(Input.GetKeyDown(KeyCode.RightArrow)){
-            nextmovepotion = transform.position + xaxismove;
+            if(PlayerManager.playerinstance.GetMoveDirection(2)){
+                nextmovepotion = transform.position + xaxismove;
+            }
         }
         // 左方向
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            nextmovepotion = transform.position - xaxismove;
+            if(PlayerManager.playerinstance.GetMoveDirection(3)){
+                nextmovepotion = transform.position - xaxismove;
+            }
         }
     }
     /// <summary>
