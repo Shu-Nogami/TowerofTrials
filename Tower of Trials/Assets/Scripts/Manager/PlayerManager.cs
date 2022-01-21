@@ -34,8 +34,14 @@ public class PlayerManager : MonoBehaviour
             isMoveDirection.Add(true);
         }
     }
-    public void AttackAction(int enemyNumber){
-        BattleManager.battleinstance.EnemyAddDamage(Pparamegers.GetAttckDamage(), enemyNumber);
+    public void AttackAction(int targetNumber){
+        if(targetNumber == -1){
+            BattleManager.battleinstance.PlayerAddDamage(Pparamegers.GetAttckDamage());
+        }
+        else{
+            BattleManager.battleinstance.EnemyAddDamage(Pparamegers.GetAttckDamage(), targetNumber);
+        }
+        BattleManager.battleinstance.isPlayerattack = false;
     }
     public void SkillAction(int skillNumber, int targetNumber){
         BattleManager.battleinstance.UsedSkill(Pskills.GetLearndSkill(skillNumber), targetNumber);
@@ -52,5 +58,11 @@ public class PlayerManager : MonoBehaviour
     }
     public bool GetMoveDirection(int directionNumber){
         return isMoveDirection[directionNumber];
+    }
+    public void UpdateHpBar(){
+        UIManager.uiinstance.UpdatePlayerHpBars(Pparamegers.GetHpMaxValue(), Pparamegers.GetHpNowValue());
+    }
+    public void UPdateManaBar(){
+        UIManager.uiinstance.UpdatePlayerManaBars(Pparamegers.GetManaMaxValue(), Pparamegers.GetManaNowValue());
     }
 }

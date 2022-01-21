@@ -67,4 +67,7 @@ public class BattleManager : MonoBehaviour
         }
         isPlayerattack = true;
     }
+    public List<GameObject> GetEnemyList(){
+        return enemyList;
+    }
 }

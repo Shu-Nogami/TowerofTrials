@@ -14,6 +14,7 @@ public class TestSkill : SkillParameters
     {
         base.SkillInitialize();
         skillValues.SetDamage(20);
+        skillValues.SetConsumeMana(20);
         skillValues.SetLearningLevel(2);
     }
 }

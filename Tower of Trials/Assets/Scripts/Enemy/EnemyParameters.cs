@@ -36,4 +36,7 @@ public class EnemyParameters : PawnParameters, IDamage
     public int GetAttackDamage(){
         return attackdamage;
     }
+    public string GetEnemyName(){
+        return thisName;
+    }
 }

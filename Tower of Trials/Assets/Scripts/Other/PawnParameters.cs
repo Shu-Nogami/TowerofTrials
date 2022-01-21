@@ -11,7 +11,7 @@ public class PawnParameters : MonoBehaviour
     protected int attackdamage;
     protected int critical;
     protected int defense;
-    protected int money;
+    protected string thisName;
     /// <summary>
     /// パラメータの値を初期化（上書き可）
     /// </summary>
@@ -23,7 +23,7 @@ public class PawnParameters : MonoBehaviour
         attackdamage = 1;
         critical = 0;
         defense = 100;
-        money = 0;
+        thisName = "NoName";
     }
     /// <summary>
     /// 体力がなくなった時の処理（上書き可）

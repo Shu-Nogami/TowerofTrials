@@ -27,7 +27,9 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
         attackdamage = 1;
         critical = 0;
         defense = 0;
-        money = 0;
+        PlayerManager.playerinstance.UpdateHpBar();
+        PlayerManager.playerinstance.UPdateManaBar();
+        thisName = "Player";
     }
     /// <summary>
     /// 死亡時
@@ -41,6 +43,7 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
     /// </summary>
     public void AddDamage(int damage){
         hpValue.CutNowValue(damage - defense);
+        PlayerManager.playerinstance.UpdateHpBar();
         Debug.Log("Player's hp = " + hpValue.GetNowValue());
         if(hpValue.GetNowValue() == 0){
             Dead();
@@ -67,10 +70,24 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
     public void EffectPortion(PlusParameters plusvalues){
         hpValue.AddNowValue(plusvalues.GetPlusHp());
         manaValue.AddNowValue(plusvalues.GetPlusMana());
+        PlayerManager.playerinstance.UpdateHpBar();
+        PlayerManager.playerinstance.UPdateManaBar();
         Debug.Log("Player HEAL hp = " + hpValue.GetNowValue());
     }
     public void StatusAtLevelUp(){
         level++;
         Debug.Log("Player Level UP :" + level);
+    }
+    public int GetHpMaxValue(){
+        return hpValue.GetMaxValue();
+    }
+    public int GetHpNowValue(){
+        return hpValue.GetNowValue();
+    }
+    public int GetManaMaxValue(){
+        return manaValue.GetMaxValue();
+    }
+    public int GetManaNowValue(){
+        return manaValue.GetNowValue();
     }
 }
