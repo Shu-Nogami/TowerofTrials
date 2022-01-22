@@ -10,6 +10,7 @@ public class SkillStateValue
     private int plusCritical;
     private int consumeMana;
     private int learningLevel;
+    private string skillText;
     public void SetSkillName(string name){
         skillName = name;
     }
@@ -28,6 +29,9 @@ public class SkillStateValue
     public void SetLearningLevel(int level){
         learningLevel = level;
     }
+    public void SetSkillText(string text){
+        skillText = text;
+    }
     public string GetSkillName(){
         return skillName;
     }
@@ -45,5 +49,8 @@ public class SkillStateValue
     }
     public int GetLearingLevel(){
         return learningLevel;
+    }
+    public string GetSkillText(){
+        return skillText;
     }
 }

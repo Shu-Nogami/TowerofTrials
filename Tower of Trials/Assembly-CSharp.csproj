@@ -45,6 +45,7 @@
      <Compile Include="Assets\Scripts\Manager\PortionManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+     <Compile Include="Assets\Scripts\Player\UI\PlayerBattleTargetUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCollisionJudg.cs" />
      <Compile Include="Assets\Scripts\Portions\PortionState.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
      <Compile Include="Assets\Scripts\Other\PlusParameters.cs" />
+     <Compile Include="Assets\Scripts\Manager\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyActions.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\Scripts\Interface\IDamage.cs" />
@@ -97,12 +99,12 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerActions.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\Scripts\Player\UI\BattleTargetButton.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSkills.cs" />
-     <Compile Include="Assets\Scripts\Player\UI\PlayerBattleTargetUI.cs" />
-     <Compile Include="Assets\Scripts\Manager\EnemyManager.cs" />
-     <Compile Include="Assets\Scripts\Player\UI\BattleTargetButton.cs" />
+     <Compile Include="Assets\Scripts\Player\UI\BattlePickSkillButton.cs" />
+     <Compile Include="Assets\Scripts\Player\UI\BattlePickFieldButton.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

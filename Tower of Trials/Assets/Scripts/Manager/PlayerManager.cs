@@ -8,12 +8,14 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager playerinstance;
     [SerializeField] private GameObject player;
-    private PlayerParameters Pparamegers;
+    private PlayerParameters Pparameters;
     private PlayerItems Pitems;
     private PlayerActions Pactions;
     private PlayerSkills Pskills;
     private Subject<int> skillSubject = new Subject<int>();
     private List<bool> isMoveDirection = new List<bool>();
+    private int idNumber;
+    private int typeNumber;
     public IObservable<int> LeaningSkill{
         get {return skillSubject; }
     }
@@ -25,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-        Pparamegers = player.GetComponent<PlayerParameters>();
+        Pparameters = player.GetComponent<PlayerParameters>();
         Pitems = player.GetComponent<PlayerItems>();
         Pactions = player.GetComponent<PlayerActions>();
         Pskills = player.GetComponent<PlayerSkills>();
@@ -35,15 +37,23 @@ public class PlayerManager : MonoBehaviour
         }
     }
     public void AttackAction(int targetNumber){
+        if(typeNumber == 0){
+            NormalAttackAction(targetNumber);
+        }
+        else if(typeNumber == 1){
+            SkillAction(idNumber, targetNumber);
+        }
+    }
+    private void NormalAttackAction(int targetNumber){
         if(targetNumber == -1){
-            BattleManager.battleinstance.PlayerAddDamage(Pparamegers.GetAttckDamage());
+            BattleManager.battleinstance.PlayerAddDamage(Pparameters.GetAttckDamage());
         }
         else{
-            BattleManager.battleinstance.EnemyAddDamage(Pparamegers.GetAttckDamage(), targetNumber);
+            BattleManager.battleinstance.EnemyAddDamage(Pparameters.GetAttckDamage(), targetNumber);
         }
         BattleManager.battleinstance.isPlayerattack = false;
     }
-    public void SkillAction(int skillNumber, int targetNumber){
+    private void SkillAction(int skillNumber, int targetNumber){
         BattleManager.battleinstance.UsedSkill(Pskills.GetLearndSkill(skillNumber), targetNumber);
     }
     public void LearningSkill(SkillStateValue skill, GameObject skillObject){
@@ -51,7 +61,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void LevelUp(int level){
         skillSubject.OnNext(level + 1);
-        Pparamegers.StatusAtLevelUp();
+        Pparameters.StatusAtLevelUp();
     }
     public void UpdateMoveDirection(int directionNumber, bool moveBool){
         isMoveDirection[directionNumber] = moveBool;
@@ -60,9 +70,27 @@ public class PlayerManager : MonoBehaviour
         return isMoveDirection[directionNumber];
     }
     public void UpdateHpBar(){
-        UIManager.uiinstance.UpdatePlayerHpBars(Pparamegers.GetHpMaxValue(), Pparamegers.GetHpNowValue());
+        UIManager.uiinstance.UpdatePlayerHpBars(Pparameters.GetHpMaxValue(), Pparameters.GetHpNowValue());
     }
     public void UPdateManaBar(){
-        UIManager.uiinstance.UpdatePlayerManaBars(Pparamegers.GetManaMaxValue(), Pparamegers.GetManaNowValue());
+        UIManager.uiinstance.UpdatePlayerManaBars(Pparameters.GetManaMaxValue(), Pparameters.GetManaNowValue());
+    }
+    public string GetSkilltext(int skillNumber){
+        return Pskills.GetSkillText(skillNumber);
+    }
+    public string GetSkillName(int skillNumber){
+        return Pskills.GetSkillName(skillNumber);
+    }
+    public void AddDamage(int adddamage){
+        Pparameters.AddDamage(adddamage);
+    }
+    public void SetIdNumber(int number){
+        idNumber = number;
+    }
+    public void SetTypeNumber(int number){
+        typeNumber = number;
+    }
+    public int GetSkillNumber(){
+        return Pskills.GetSkillNumber();
     }
 }

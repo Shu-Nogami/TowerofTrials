@@ -8,4 +8,7 @@ public class BaseButtonAction : MonoBehaviour
     public virtual void Click(){
         Debug.Log("This button clicked!");
     }
+    public virtual void OnPointerEnter(){
+
+    }
 }

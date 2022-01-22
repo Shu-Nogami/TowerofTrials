@@ -25,4 +25,13 @@ public class PlayerSkills : MonoBehaviour
     public SkillStateValue GetLearndSkill(int skillNumber){
         return LearnedSkills[skillNumber];
     }
+    public string GetSkillName(int skillNumber){
+        return LearnedSkills[skillNumber].GetSkillName();
+    }
+    public string GetSkillText(int skillNumber){
+        return LearnedSkills[skillNumber].GetSkillText();
+    }
+    public int GetSkillNumber(){
+        return LearnedSkills.Count;
+    }
 }

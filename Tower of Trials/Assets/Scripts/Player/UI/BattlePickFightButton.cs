@@ -6,6 +6,7 @@ public class BattlePickFightButton : BaseButtonAction
 {
     public override void Click()
     {
+        PlayerManager.playerinstance.SetTypeNumber(0);
         UIManager.uiinstance.ChangeTargetAction();
     }
 }

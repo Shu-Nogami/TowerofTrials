@@ -20,6 +20,7 @@ public class SkillParameters : MonoBehaviour
         skillValues.SetPlusCritical(0);
         skillValues.SetConsumeMana(0);
         skillValues.SetLearningLevel(1);
+        skillValues.SetSkillText("");
     }
     private void SetSkill(){
         PlayerManager.playerinstance.LearningSkill(skillValues, gameObject);

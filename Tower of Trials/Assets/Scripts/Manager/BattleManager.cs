@@ -8,8 +8,6 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager battleinstance;
-    [SerializeField] private GameObject player;
-    private PlayerParameters Pparameters;
     List<GameObject> enemyList = new List<GameObject>();
     public bool isPlayerattack = true;
     public bool isBattle = true;
@@ -22,7 +20,6 @@ public class BattleManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-        Pparameters = player.GetComponent<PlayerParameters>();
     }
 
     private void Update(){
@@ -40,7 +37,7 @@ public class BattleManager : MonoBehaviour
     /// 敵からプレイヤーに対してのダメージ
     /// </summary>
     public void PlayerAddDamage(int adddamage){
-        Pparameters.AddDamage(adddamage);
+        PlayerManager.playerinstance.AddDamage(adddamage);
     }
     /// <summary>
     /// プレイヤーから敵に対してのダメージ

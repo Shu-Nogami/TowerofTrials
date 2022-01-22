@@ -31,10 +31,10 @@ public class PlayerActions : MonoBehaviour
                 PlayerManager.playerinstance.LevelUp(1);
                 BattleManager.battleinstance.isPlayerattack = false;
             }
-            if(Input.GetKeyDown(KeyCode.S)){
-                PlayerManager.playerinstance.SkillAction(0, 0);
-                BattleManager.battleinstance.isPlayerattack = false;
-            }
+            //if(Input.GetKeyDown(KeyCode.S)){
+            //    PlayerManager.playerinstance.SkillAction(0, 0);
+            //    BattleManager.battleinstance.isPlayerattack = false;
+            //}
         }
     }
     /// <summary>
