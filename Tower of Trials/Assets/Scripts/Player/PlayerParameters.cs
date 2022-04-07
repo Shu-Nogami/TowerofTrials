@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionState
+public class PlayerParameters : PawnParameters, IDamage, IPlusXp
 {
     // Start is called before the first frame update
     void Start()
@@ -67,13 +67,16 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp, IPlusPortionSt
     /// <summary>
     /// 使用したポーションの効果を反映
     /// </summary>
-    public void EffectPortion(PlusParameters plusvalues){
-        hpValue.AddNowValue(plusvalues.GetPlusHp());
-        manaValue.AddNowValue(plusvalues.GetPlusMana());
+    public void EffectPortion(PortionStateValue portionValue){
+        hpValue.AddNowValue(portionValue.GetPlusHp());
+        manaValue.AddNowValue(portionValue.GetPlusMana());
         PlayerManager.playerinstance.UpdateHpBar();
         PlayerManager.playerinstance.UPdateManaBar();
         Debug.Log("Player HEAL hp = " + hpValue.GetNowValue());
     }
+    /// <summary>
+    /// レベルアップ処理
+    /// </summary>
     public void StatusAtLevelUp(){
         level++;
         Debug.Log("Player Level UP :" + level);

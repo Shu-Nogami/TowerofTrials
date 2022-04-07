@@ -11,6 +11,7 @@ public class SkillStateValue
     private int consumeMana;
     private int learningLevel;
     private string skillText;
+    private bool isUsedSkill;
     public void SetSkillName(string name){
         skillName = name;
     }
@@ -32,6 +33,9 @@ public class SkillStateValue
     public void SetSkillText(string text){
         skillText = text;
     }
+    public void SetIsUsedSkill(bool isUsed){
+        isUsedSkill = isUsed;
+    }
     public string GetSkillName(){
         return skillName;
     }
@@ -52,5 +56,8 @@ public class SkillStateValue
     }
     public string GetSkillText(){
         return skillText;
+    }
+    public bool GetIsUsedSkill(){
+        return isUsedSkill;
     }
 }

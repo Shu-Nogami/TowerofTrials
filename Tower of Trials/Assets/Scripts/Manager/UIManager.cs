@@ -22,14 +22,23 @@ public class UIManager : MonoBehaviour
         battlePick = player.GetComponent<PlayerBattlePickUI>();
         battleTarget = player.GetComponent<PlayerBattleTargetUI>();
     }
+    /// <summary>
+    /// プレイヤーのHPバーを更新する
+    /// </sumamry>
     public void UpdatePlayerHpBars(int playerMaxValue, int playerNowValue){
         battlePick.SetPlayerHPBar(playerMaxValue, playerNowValue);
         battleTarget.SetPlayerHPBar(playerMaxValue, playerNowValue);
     }
+    /// <summary>
+    /// プレイヤーのManaバーを更新する
+    /// </sumamry>
     public void UpdatePlayerManaBars(int playerMaxValue, int playerNowValue){
         battlePick.SetPlayerManaBar(playerMaxValue, playerNowValue);
         battleTarget.SetPlayerManaBar(playerMaxValue, playerNowValue);
     }
+    /// <summary>
+    /// 敵の名前をセットする
+    /// </sumamry>
     private void SetEnemyNameList(List<GameObject> enemyList){
         battleTarget.UpdateEnemyButton(enemyList);
     }
@@ -42,9 +51,15 @@ public class UIManager : MonoBehaviour
         battleTarget.GetThisObj().SetActive(false);
         battlePick.GetThisObj().SetActive(true);
     }
-    public void UpdateExplinText(int idNumber, int typeNumber){
-        if(typeNumber == 0){
-            battlePick.SetFieldText(PlayerManager.playerinstance.GetSkilltext(idNumber));
+    public void UpdateExplinText(int idNumber){
+        switch(battlePick.GetTypeNumber()){
+            case 1:
+                battlePick.SetFieldText(PlayerManager.playerinstance.GetSkilltext(idNumber));
+                break;
+            case 2:
+                break;
+            default:
+                break;
         }
     }
     public void ChengeField(int typeNumber){

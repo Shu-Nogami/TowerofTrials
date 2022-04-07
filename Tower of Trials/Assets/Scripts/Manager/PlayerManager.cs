@@ -36,6 +36,9 @@ public class PlayerManager : MonoBehaviour
             isMoveDirection.Add(true);
         }
     }
+    /// <summary>
+    /// バトル時、プレイヤーの行動一覧
+    /// </summary>
     public void AttackAction(int targetNumber){
         if(typeNumber == 0){
             NormalAttackAction(targetNumber);
@@ -43,7 +46,13 @@ public class PlayerManager : MonoBehaviour
         else if(typeNumber == 1){
             SkillAction(idNumber, targetNumber);
         }
+        else if(typeNumber == 2){
+            PortionAction(idNumber);
+        }
     }
+    /// <summary>
+    /// 通常攻撃時、攻撃対象にダメージを与える
+    /// </summary>
     private void NormalAttackAction(int targetNumber){
         if(targetNumber == -1){
             BattleManager.battleinstance.PlayerAddDamage(Pparameters.GetAttckDamage());
@@ -55,6 +64,9 @@ public class PlayerManager : MonoBehaviour
     }
     private void SkillAction(int skillNumber, int targetNumber){
         BattleManager.battleinstance.UsedSkill(Pskills.GetLearndSkill(skillNumber), targetNumber);
+    }
+    private void PortionAction(int potionNumber){
+        PortionManager.portioninstance.UsedPortion(potionNumber);
     }
     public void LearningSkill(SkillStateValue skill, GameObject skillObject){
         Pskills.SetLearndSkill(skill, skillObject);

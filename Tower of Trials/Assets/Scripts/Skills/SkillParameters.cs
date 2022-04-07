@@ -21,9 +21,16 @@ public class SkillParameters : MonoBehaviour
         skillValues.SetConsumeMana(0);
         skillValues.SetLearningLevel(1);
         skillValues.SetSkillText("");
+        skillValues.SetIsUsedSkill(false);
     }
+    /// <summary>
+    /// スキル修得
+    /// </summary>
     private void SetSkill(){
-        PlayerManager.playerinstance.LearningSkill(skillValues, gameObject);
-        Destroy(gameObject);
+        if(skillValues.GetIsUsedSkill() == false){
+            PlayerManager.playerinstance.LearningSkill(skillValues, gameObject);
+            Destroy(gameObject);
+            skillValues.SetIsUsedSkill(true);
+        }
     }
 }

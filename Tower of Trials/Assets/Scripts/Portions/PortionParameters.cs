@@ -6,45 +6,38 @@ using System;
 
 public class PortionParameters : MonoBehaviour
 {
-    protected string portionname;
-    protected PlusParameters plusvalues = new PlusParameters();
-    protected int count;
-    protected int portionnumber;
+    protected PortionStateValue portionValues = new PortionStateValue();
     protected virtual void Start(){
-        PortionManager.portioninstance.PortionNumberChanged.Where(State => State.GetPortionNumber() == portionnumber && State.GetPortionProcess() == "ADD")
-                                                           .Subscribe(State => AddPortionNumber(State.GetPortionACNumber()));
-        PortionManager.portioninstance.PortionNumberChanged.Where(State => State.GetPortionNumber() == portionnumber && State.GetPortionProcess() == "USE")
-                                                           .Subscribe(State => { ConsumePortion(State.GetPortionACNumber()); });
-        Destroy(gameObject);
+
     }
     /// <summary>
     /// ポーションの内容初期化
     /// </summary>
     protected virtual void PortionInitialize(){
-        portionname = "";
-        plusvalues.SetPlusHp(0);
-        plusvalues.SetPlusMana(0);
-        count = 0;
-        portionnumber = 999;
+        portionValues.SetPortionName("");
+        portionValues.SetPortionText("testText");
+        portionValues.SetPortionCount(0);
+        portionValues.SetPortionNumber(999);
+        portionValues.SetPlusHp(0);
+        portionValues.SetPlusMana(0);
     }
     /// <summary>
     /// ポーションの個数を指定数増やす
     /// </summary>
-    private void AddPortionNumber(int addcount){
-        count += addcount;
+    public void AddPortionNumber(int addCount){
+        portionValues.PlusCount(addCount);
     }
     /// <summary>
     /// ポーションの個数を指定数減らす
     /// </summary>
-    private void CutPortionNumber(int cutcount){
-        count -= cutcount;
-        if(count < 0) count = 0;
+    private void CutPortionNumber(int cutCount){
+        portionValues.CutCount(cutCount);
     }
     /// <summary>
     /// ポーションを使用し、効果内容を渡す
     /// </summary>
-    private void ConsumePortion(int cutcount){
+    public void ConsumePortion(int cutcount){
         CutPortionNumber(cutcount);
-        PortionManager.portioninstance.PassPortionState(plusvalues);
+        PortionManager.portioninstance.PassPortionState(portionValues);
     }
 }

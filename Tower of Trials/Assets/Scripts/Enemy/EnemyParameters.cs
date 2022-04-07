@@ -21,6 +21,9 @@ public class EnemyParameters : PawnParameters, IDamage
         base.Initialize();
         defense = 0;
     }
+    /// <summary>
+    /// この敵にダメージを与える
+    /// </summary>
     public void AddDamage(int damage){
         hpValue.CutNowValue(damage - defense);
         Debug.Log("enemy's hp = " + hpValue.GetNowValue());
@@ -28,6 +31,9 @@ public class EnemyParameters : PawnParameters, IDamage
             Dead();
         }
     }
+    /// <summary>
+    /// 死亡時
+    /// </summary>
     protected override void Dead()
     {
         Debug.Log("Enemy Dead");

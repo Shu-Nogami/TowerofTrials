@@ -26,8 +26,13 @@ public class PlayerBattlePickUI : BaseBattleUI
                 fieldButton[i].SetActive(false);
             }
         }
-        if(typeNumber == 1){
-            itemNumber = PlayerManager.playerinstance.GetSkillNumber();
+        if(typeNumber == 1 || typeNumber == 2){
+            if(typeNumber == 1){
+                itemNumber = PlayerManager.playerinstance.GetSkillNumber();
+            }
+            else if(typeNumber == 2){
+                itemNumber = PortionManager.portioninstance.GetPortionNumber();
+            }
             if(fieldButton.Count > itemNumber - (fieldButton.Count * pageNumber)){
                 buttonNumber = itemNumber - (fieldButton.Count * pageNumber);
             }
@@ -49,5 +54,8 @@ public class PlayerBattlePickUI : BaseBattleUI
     }
     public void SetFieldText(string textMessage){
         fieldText.text = textMessage;
+    }
+    public int GetTypeNumber(){
+        return typeNumber;
     }
 }

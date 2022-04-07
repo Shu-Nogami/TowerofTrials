@@ -47,6 +47,9 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Enemy Damaged : " + adddamage);
         isPlayerattack = false;
     }
+    /// <summary>
+    /// スキルを指定した対象に使用する
+    /// </sumamry>
     public void UsedSkill(SkillStateValue skillValue, int targetNumber){
         if(targetNumber == -1){
             PlayerAddDamage(skillValue.GetDamage());

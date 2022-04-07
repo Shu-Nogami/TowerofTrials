@@ -18,7 +18,7 @@ public class BattlePickFieldButton : BaseButtonAction
         SetFieldText();
     }
     private void SetFieldText(){
-        UIManager.uiinstance.UpdateExplinText(fieldNumber, 0);
+        UIManager.uiinstance.UpdateExplinText(fieldNumber);
     }
     public void SetFieldNumber(int number){
         fieldNumber = number;

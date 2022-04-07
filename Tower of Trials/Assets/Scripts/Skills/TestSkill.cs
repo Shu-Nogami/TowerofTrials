@@ -13,8 +13,10 @@ public class TestSkill : SkillParameters
     protected override void SkillInitialize()
     {
         base.SkillInitialize();
+        skillValues.SetSkillName("TestSkill");
         skillValues.SetDamage(20);
         skillValues.SetConsumeMana(20);
         skillValues.SetLearningLevel(2);
+        skillValues.SetSkillText("TestText");
     }
 }

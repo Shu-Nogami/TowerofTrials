@@ -11,9 +11,10 @@ public class LowHealPortion : PortionParameters
     protected override void PortionInitialize()
     {
         base.PortionInitialize();
-        portionname = "下級回復ポーション";
-        plusvalues.SetPlusHp(300);
-        count = 3;
-        portionnumber = 0;
+        portionValues.SetPortionName("lowPortion");
+        portionValues.SetPortionText("test");
+        portionValues.SetPlusHp(300);
+        portionValues.SetPortionCount(3);
+        portionValues.SetPortionNumber(0);
     }
 }

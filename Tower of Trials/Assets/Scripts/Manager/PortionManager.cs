@@ -7,8 +7,8 @@ using System;
 public class PortionManager : MonoBehaviour
 {
     public static PortionManager portioninstance;
-    [SerializeField] List<GameObject> portions = new List<GameObject>();
-    private List<GameObject> havingpotions = new List<GameObject>();
+    [SerializeField] List<PortionParameters> portions = new List<PortionParameters>();
+    private List<PortionStateValue> havingpotions = new List<PortionStateValue>();
     private Subject<PortionState> portionsubject = new Subject<PortionState>();
     PortionState portionState = new PortionState();
     [SerializeField] PlayerParameters Pparameters;
@@ -24,37 +24,29 @@ public class PortionManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-        havingpotions.Add(portions[0]);
-        portion = (GameObject)Instantiate(portions[0]);
-        portions.Sort();
     }
     /// <summary>
     /// ポーションの個数を追加
     /// </summary>
     public void AddPortion(int portionnumber){
-        if(havingpotions.Contains(portions[portionnumber])){
-            portionState.SetPortionState(portionnumber, 1, "ADD");
-            portionsubject.OnNext(portionState);
-        }
-        else{
-            havingpotions.Add(portions[portionnumber]);
-            portion = (GameObject)Instantiate(portions[portionnumber]);
-            havingpotions.Sort();
-        }
+        portions[portionnumber].AddPortionNumber(1);
     }
     /// <summary>
     /// ポーションを使用
     /// </summary>
     public void UsedPortion(int portionnumber){
-        if(havingpotions.Contains(portions[portionnumber])){
-            portionState.SetPortionState(portionnumber, 1, "USE");
-            portionsubject.OnNext(portionState);
-        }
+        portions[portionnumber].ConsumePortion(1);
     }
     /// <summary>
     /// ポーションの効果をプレイヤーに渡す
     /// </summary>
-    public void PassPortionState(PlusParameters plusvalue){
-        Pparameters.EffectPortion(plusvalue);
+    public void PassPortionState(PortionStateValue portionValues){
+        Pparameters.EffectPortion(portionValues);
+    }
+    /// <summary>
+    /// ポーションの識別番号を渡す
+    /// </summary>
+    public int GetPortionNumber(){
+        return havingpotions.Count;
     }
 }
