@@ -49,6 +49,12 @@ public class PlayerBattlePickUI : BaseBattleUI
             }
         }
     }
+    public void ResetFieldUI(){
+        foreach(GameObject button in fieldButton){
+            button.SetActive(false);
+        }
+        this.SetFieldText("");
+    }
     public void SetTypeNumber(int number){
         typeNumber = number;
     }

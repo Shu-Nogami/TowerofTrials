@@ -7,10 +7,11 @@ using UnityEngine;
 /// </summary>
 public class BattleManager : MonoBehaviour
 {
-    public static BattleManager battleinstance;
-    List<GameObject> enemyList = new List<GameObject>();
+    public static BattleManager battleinstance { get; private set; }
+    [SerializeField] List<GameObject> enemyList = new List<GameObject>();
     public bool isPlayerattack = true;
-    public bool isBattle = true;
+    public bool isBattle = false;
+    private bool test = false;
 
     private void Awake(){
         if(battleinstance == null){
@@ -21,11 +22,18 @@ public class BattleManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Update(){
-        if(!isPlayerattack){
-            EnemiesAction();
+        if(Input.GetKeyDown(KeyCode.S)){
+            if(test == false){
+                test = true;
+                isBattle = true;
+                this.BattleSetUp();
+            }
         }
+    }
+    public void BattleSetUp(){
+        UIManager.uiinstance.FirstBattleUI();
+        EnemyManager.enemyinstance.SpawnEnemy();
     }
     /// <summary>
     /// 敵をリストに入れる
@@ -34,18 +42,20 @@ public class BattleManager : MonoBehaviour
         enemyList.Add(enemy);
     }
     /// <summary>
-    /// 敵からプレイヤーに対してのダメージ
+    /// プレイヤーに対してのダメージ
     /// </summary>
     public void PlayerAddDamage(int adddamage){
         PlayerManager.playerinstance.AddDamage(adddamage);
+        UIManager.uiinstance.SetBattleText("Player Damaged : " + adddamage);
     }
     /// <summary>
     /// プレイヤーから敵に対してのダメージ
     /// </summary>
     public void EnemyAddDamage(int adddamage, int enemyNumber){
         enemyList[enemyNumber].GetComponent<EnemyParameters>().AddDamage(adddamage);
+        UIManager.uiinstance.SetBattleText("Enemy Damaged : " + adddamage);
         Debug.Log("Enemy Damaged : " + adddamage);
-        isPlayerattack = false;
+        UIManager.uiinstance.ChangeBattleText();
     }
     /// <summary>
     /// スキルを指定した対象に使用する
@@ -64,10 +74,32 @@ public class BattleManager : MonoBehaviour
     private void EnemiesAction(){
         foreach(GameObject enemy in enemyList){
             enemy.GetComponent<EnemyActions>().Actions();
+            Debug.Log("1");
         }
-        isPlayerattack = true;
+        UIManager.uiinstance.ChangeBattleText();
     }
     public List<GameObject> GetEnemyList(){
         return enemyList;
+    }
+    public int GetEnemyListCount(){
+        return enemyList.Count;
+    }
+    public void EnemyDead(GameObject enemy){
+        enemyList.Remove(enemy);
+        if(enemyList.Count == 0){
+            this.BattleEnd();
+        }
+    }
+    private void BattleEnd(){
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+    public void ChangeIsPlayerAttack(){
+        isPlayerattack = !isPlayerattack;
+        this.JudgeEnemyAttack();
+    }
+    private void JudgeEnemyAttack(){
+        if(isPlayerattack == false){
+            this.EnemiesAction();
+        }
     }
 }

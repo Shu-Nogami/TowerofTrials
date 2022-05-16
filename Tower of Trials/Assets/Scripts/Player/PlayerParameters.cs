@@ -20,7 +20,7 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
     /// </summary>
     protected override void Initialize()
     {
-        hpValue.SetMaxNowValue(500, 3);
+        hpValue.SetMaxNowValue(500, 250);
         xpValue.SetMaxNowValue(500, 0);
         manaValue.SetMaxNowValue(100, 100);
         level = 1;
@@ -44,6 +44,7 @@ public class PlayerParameters : PawnParameters, IDamage, IPlusXp
     public void AddDamage(int damage){
         hpValue.CutNowValue(damage - defense);
         PlayerManager.playerinstance.UpdateHpBar();
+        UIManager.uiinstance.SetBattleText("Player's hp = " + hpValue.GetNowValue());
         Debug.Log("Player's hp = " + hpValue.GetNowValue());
         if(hpValue.GetNowValue() == 0){
             Dead();

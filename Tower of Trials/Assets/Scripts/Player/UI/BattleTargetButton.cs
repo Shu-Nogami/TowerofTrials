@@ -8,6 +8,5 @@ public class BattleTargetButton : BaseButtonAction
     public override void Click()
     {
         PlayerManager.playerinstance.AttackAction(targetNumber);
-        UIManager.uiinstance.FinishTargetAction();
     }
 }

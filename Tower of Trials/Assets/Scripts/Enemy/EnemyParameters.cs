@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyParameters : PawnParameters, IDamage
 {
+    [SerializeField] private Image enemyImage;
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();
-        BattleManager.battleinstance.AddEnemyList(this.gameObject);
+        this.Initialize();
+        this.SetUp();
     }
 
     // Update is called once per frame
@@ -20,6 +22,14 @@ public class EnemyParameters : PawnParameters, IDamage
     {
         base.Initialize();
         defense = 0;
+    }
+    /// <summary>
+    /// 戦闘開始時の準備
+    /// </summary>
+    private void SetUp(){
+        BattleManager.battleinstance.AddEnemyList(this.gameObject);
+        UIManager.uiinstance.AddEnemyImage(this.enemyImage);
+        UIManager.uiinstance.ReflectEnemyImage();
     }
     /// <summary>
     /// この敵にダメージを与える
@@ -36,8 +46,7 @@ public class EnemyParameters : PawnParameters, IDamage
     /// </summary>
     protected override void Dead()
     {
-        Debug.Log("Enemy Dead");
-        Destroy(this.gameObject);
+        BattleManager.battleinstance.EnemyDead(this.gameObject);
     }
     public int GetAttackDamage(){
         return attackdamage;

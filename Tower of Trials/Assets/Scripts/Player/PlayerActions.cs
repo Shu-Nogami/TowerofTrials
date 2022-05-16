@@ -25,11 +25,13 @@ public class PlayerActions : MonoBehaviour
         if(BattleManager.battleinstance.isPlayerattack){
             if(Input.GetKeyDown(KeyCode.I)){
                 EffectPortion(0);
-                BattleManager.battleinstance.isPlayerattack = false;
+                UIManager.uiinstance.SetBattleText("UsedPortion");
+                UIManager.uiinstance.ChangeBattleText();
             }
             if(Input.GetKeyDown(KeyCode.U)){
                 PlayerManager.playerinstance.LevelUp(1);
-                BattleManager.battleinstance.isPlayerattack = false;
+                UIManager.uiinstance.SetBattleText("LevelUp");
+                UIManager.uiinstance.ChangeBattleText();
             }
             //if(Input.GetKeyDown(KeyCode.S)){
             //    PlayerManager.playerinstance.SkillAction(0, 0);

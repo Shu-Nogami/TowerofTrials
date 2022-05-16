@@ -6,7 +6,7 @@ using System;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager playerinstance;
+    public static PlayerManager playerinstance { get; private set; }
     [SerializeField] private GameObject player;
     private PlayerParameters Pparameters;
     private PlayerItems Pitems;
@@ -56,14 +56,15 @@ public class PlayerManager : MonoBehaviour
     private void NormalAttackAction(int targetNumber){
         if(targetNumber == -1){
             BattleManager.battleinstance.PlayerAddDamage(Pparameters.GetAttckDamage());
+            UIManager.uiinstance.ChangeBattleText();
         }
         else{
             BattleManager.battleinstance.EnemyAddDamage(Pparameters.GetAttckDamage(), targetNumber);
         }
-        BattleManager.battleinstance.isPlayerattack = false;
     }
     private void SkillAction(int skillNumber, int targetNumber){
         BattleManager.battleinstance.UsedSkill(Pskills.GetLearndSkill(skillNumber), targetNumber);
+        UIManager.uiinstance.ChangeBattleText();
     }
     private void PortionAction(int potionNumber){
         PortionManager.portioninstance.UsedPortion(potionNumber);
